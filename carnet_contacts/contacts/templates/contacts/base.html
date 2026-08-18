@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titre %}Carnet de contacts{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>📇 Carnet de contacts</h1>
+        <nav>
+            <a href="{% url 'liste_contacts' %}">Accueil</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        {% block contenu %}
+        {% endblock %}
+    </main>
+</body>
+</html>

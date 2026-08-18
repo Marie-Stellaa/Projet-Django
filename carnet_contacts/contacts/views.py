@@ -7,4 +7,4 @@ def liste_contacts(request):
 
 def detail_contact(request, contact_id):
     contact = get_object_or_404(Contact, id=contact_id)
-    return render(request, 'contacts/detail_contact.html', {'contact': contact})
+    return render(request, 'contacts/detail_contacts.html', {'contact': contact})

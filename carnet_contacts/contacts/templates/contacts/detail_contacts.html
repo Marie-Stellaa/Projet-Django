@@ -1,0 +1,15 @@
+{% extends 'contacts/base.html' %}
+
+{% block titre %}{{ contact.prenom }} {{ contact.nom }}{% endblock %}
+
+{% block contenu %}
+<h2>{{ contact.prenom }} {{ contact.nom }}</h2>
+
+<ul>
+    <li><strong>Email :</strong> {{ contact.email }}</li>
+    <li><strong>Téléphone :</strong> {{ contact.telephone }}</li>
+    <li><strong>Ajouté le :</strong> {{ contact.date_ajout|date:"d/m/Y H:i" }}</li>
+</ul>
+
+<a href="{% url 'liste_contacts' %}">← Retour à la liste</a>
+{% endblock %}
