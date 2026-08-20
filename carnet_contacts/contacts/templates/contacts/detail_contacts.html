@@ -13,4 +13,6 @@
 </ul>
 
 <a href="{% url 'liste_contacts' %}" class="btn-retour">← Retour à la liste</a>
+<a href="{% url 'modifier_contact' contact.id %}" class="btn-retour"> Modifier</a>
+<a href="{% url 'supprimer_contact' contact.id %}" class="btn-retour" style="background-color:#c0392b;"> Supprimer</a>
 {% endblock %}
