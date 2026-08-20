@@ -201,9 +201,8 @@ input[type="submit"] {
             <a href="{% url 'liste_contacts' %}">Accueil</a>
             {% if user.is_authenticated %}
             <span style="color:white;">Bonjour, {{ user.username }}</span>
-            <form action="{% url 'logout' %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" style="background:none; border:none; color:white; text-decoration:underline; cursor:pointer; font:inherit;">Déconnexion</button>
+            
+         
             </form>
               {% else %}
              <a href="{% url 'login' %}">Connexion</a>
