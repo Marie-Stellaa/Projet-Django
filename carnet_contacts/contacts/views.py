@@ -1,10 +1,10 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Contact
-from .forms import ContactForm 
+from .forms import ContactForm
 
 def liste_contacts(request):
     contacts = Contact.objects.all()
-    return render(request, 'contacts/liste_contacts.html', {'contacts': contacts})
+    return render(request, 'contacts/list_contacts.html', {'contacts': contacts})
 
 def detail_contact(request, contact_id):
     contact = get_object_or_404(Contact, id=contact_id)
@@ -12,7 +12,7 @@ def detail_contact(request, contact_id):
 
 def creer_contact(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('liste_contacts')
@@ -23,7 +23,7 @@ def creer_contact(request):
 def modifier_contact(request, contact_id):
     contact = get_object_or_404(Contact, id=contact_id)
     if request.method == 'POST':
-        form = ContactForm(request.POST, instance=contact)
+        form = ContactForm(request.POST, request.FILES, instance=contact)
         if form.is_valid():
             form.save()
             return redirect('detail_contact', contact_id=contact.id)

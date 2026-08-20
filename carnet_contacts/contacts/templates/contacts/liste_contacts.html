@@ -6,7 +6,7 @@
 
 <h2>Liste des contacts</h2>
 
-<a href="{% url 'creer_contact' %}" class="btn-retour">+ Ajouter un contact</a>
+
 
 {% if contacts %}
     <ul>
@@ -25,6 +25,5 @@
 {% endif %}
  {% if user.is_authenticated %}
     <a href="{% url 'creer_contact' %}" class="btn-retour">+ Ajouter un contact</a>
-    <a href="{% url 'logout' %}" class="btn-retour" style="background-color:#c0392b;">Se déconnecter</a>
    {% endif %} 
 {% endblock %}
