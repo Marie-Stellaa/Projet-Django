@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'contacts/base.html' %}
 {% block content %}
 <h1>Confirmer la suppression</h1>
 <p>Voulez-vous vraiment supprimer <strong>{{ contact.prenom }} {{ contact.nom }}</strong> ?</p>
@@ -6,6 +6,6 @@
 <form method="post">
     {% csrf_token %}
     <button type="submit" class="btn btn-danger">Oui, supprimer</button>
-    <a href="{% url 'detail_contact' contact.pk %}" class="btn btn-secondary">Annuler</a>
+    <a href="{% url 'detail_contacts' contact.pk %}" class="btn btn-secondary">Annuler</a>
 </form>
 {% endblock %}
