@@ -1,29 +1,27 @@
-{% extends 'contacts/base.html' %}
+{% extends 'base.html' %}
+{% block content %}
+<h1>Liste des contacts</h1>
 
-{% block titre %}Liste des contacts{% endblock %}
-
-{% block contenu %}
-
-<h2>Liste des contacts</h2>
-
-
-
-{% if contacts %}
-    <ul>
-        {% for contact in contacts %}
-            <li>
-                <a href="{% url 'detail_contact' contact.id %}">
-                    {{ contact.prenom }} {{ contact.nom }}
-                </a>
-                — {{ contact.email }}
-            </li>
-        {% endfor %}
-       
-    </ul>
-{% else %}
-    <p>Aucun contact enregistré.</p>
+{% if user.is_authenticated %}
+    <a href="{% url 'ajouter_contact' %}" class="btn btn-primary mb-3">Ajouter un contact</a>
 {% endif %}
- {% if user.is_authenticated %}
-    <a href="{% url 'creer_contact' %}" class="btn-retour">+ Ajouter un contact</a>
-   {% endif %} 
+
+<div class="row">
+    {% for contact in contacts %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            {% if contact.photo %}
+                <img src="{{ contact.photo.url }}" class="card-img-top" alt="{{ contact }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ contact.prenom }} {{ contact.nom }}</h5>
+                <p class="card-text">{{ contact.email }}</p>
+                <a href="{% url 'detail_contact' contact.pk %}" class="btn btn-outline-secondary btn-sm">Voir détail</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>Aucun contact enregistré.</p>
+    {% endfor %}
+</div>
 {% endblock %}

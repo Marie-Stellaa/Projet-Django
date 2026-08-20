@@ -5,4 +5,5 @@ from .models import Contact
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('nom', 'prenom', 'email', 'telephone', 'date_ajout')
     search_fields = ('nom', 'prenom', 'email')
-    search_fields = ('nom', 'prenom', 'email')
+    list_filter = ('date_ajout',)
+    ordering = ('nom',)

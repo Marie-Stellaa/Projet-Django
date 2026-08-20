@@ -1,17 +1,11 @@
-{% extends 'contacts/base.html' %}
-{% block titre %}Supprimer un contact{% endblock %}
-{% block contenu %}
-<h2>Confirmer la suppression</h2>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Confirmer la suppression</h1>
+<p>Voulez-vous vraiment supprimer <strong>{{ contact.prenom }} {{ contact.nom }}</strong> ?</p>
 
-<div class="confirmation-box">
-    <p>Voulez-vous vraiment supprimer <strong>{{ contact.prenom }} {{ contact.nom }}</strong> ? Cette action est irréversible.</p>
-</div>
-
-<div class="actions-confirmation">
-    <form action="{% url 'supprimer_contact' contact.id %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Oui, supprimer" class="btn-retour" style="background-color:#c0392b;">
-    </form>
-    <a href="{% url 'detail_contact' contact.id %}" class="btn-retour" style="background-color:#999;">← Annuler</a>
-</div>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Oui, supprimer</button>
+    <a href="{% url 'detail_contact' contact.pk %}" class="btn btn-secondary">Annuler</a>
+</form>
 {% endblock %}
