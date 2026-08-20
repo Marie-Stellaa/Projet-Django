@@ -5,6 +5,9 @@
 {% block contenu %}
 <h2>{{ contact.prenom }} {{ contact.nom }}</h2>
 
+{% if contact.photo %}
+    <img src="{{ contact.photo.url }}" alt="Photo de {{ contact.prenom }}" style="max-width:200px; border-radius:8px; margin-bottom:15px;">
+{% endif %}
 
 <ul class="detail-info">
     <li><strong>Email :</strong> {{ contact.email }}</li>
@@ -12,7 +15,10 @@
     <li><strong>Ajouté le :</strong> {{ contact.date_ajout|date:"d/m/Y H:i" }}</li>
 </ul>
 
+{% if user.is_authenticated %}
+    <a href="{% url 'modifier_contact' contact.id %}" class="btn-retour"> Modifier</a>
+    <a href="{% url 'supprimer_contact' contact.id %}" class="btn-retour" style="background-color:#c0392b;"> Supprimer</a>
+{% endif %}
+
 <a href="{% url 'liste_contacts' %}" class="btn-retour">← Retour à la liste</a>
-<a href="{% url 'modifier_contact' contact.id %}" class="btn-retour"> Modifier</a>
-<a href="{% url 'supprimer_contact' contact.id %}" class="btn-retour" style="background-color:#c0392b;"> Supprimer</a>
 {% endblock %}
